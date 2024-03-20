@@ -1,5 +1,5 @@
 import { config, fields, collection } from "@keystatic/core";
-import { colorPicker } from "./fields/colorPicker";
+import * as customFields from "./fields";
 export default config({
   storage: {
     kind: "local",
@@ -12,13 +12,13 @@ export default config({
       format: { contentField: "content" },
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
-        accentColor: colorPicker({
+        accentColor: customFields.colorPicker({
           label: "Accent Color",
           defaultValue: "#000000",
         }),
         myUrl: fields.url({
           label: "My URL",
-          validation: { },
+          validation: {},
         }),
         content: fields.markdoc({
           label: "Content",
